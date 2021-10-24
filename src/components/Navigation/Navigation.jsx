@@ -1,10 +1,10 @@
-import React, {useContext} from 'react'
-import { Link } from 'wouter'
-import UserContext from '../../context/UserContext'
+import { useEffect } from 'react';
+import { Link, useLocation } from 'wouter'
 export default function Navigation() {
 
-  const context = useContext(UserContext);
-
+  const [location] = useLocation()
+  useEffect(()=>{
+  },[location])
 
 
   return (
@@ -12,7 +12,7 @@ export default function Navigation() {
       <ul>
         <li><Link to="/team">My Team</Link></li>
         <li><Link to="/explore">Explore Heroes</Link></li>
-        {!context.userInfo.token? <li><Link to="/login">Login</Link></li> : <li>You are logged in!</li>}
+        {!localStorage.getItem("token") ? <li><Link to="/login">Login</Link></li> : <li>You are logged in!</li>}
       </ul>
     </nav>
   )

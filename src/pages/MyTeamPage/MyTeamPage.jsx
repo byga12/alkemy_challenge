@@ -6,7 +6,7 @@ export default function MyTeamPage() {
   return (
     <UserContext.Consumer>
       { context => 
-      <h1>{context.userInfo.token}</h1>
+      <h1>My team</h1>
 
       }
     </UserContext.Consumer>

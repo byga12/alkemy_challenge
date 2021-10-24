@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react/cjs/react.development';
+import { useState } from 'react';
 import s from './ExploreHeroesPage.module.sass'
 
 import HeroCard from '../../components/HeroCard/HeroCard';
