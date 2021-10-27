@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'wouter'
 export default function Navigation() {
 
-  const [location] = useLocation()
+  const [location, setLocation] = useLocation()
   useEffect(()=>{
-  },[location])
-
+    if(!localStorage.getItem("token")) {
+      setLocation('/login')
+    }
+  },[location, setLocation])
 
   return (
     <nav>
