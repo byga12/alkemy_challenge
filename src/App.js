@@ -1,5 +1,5 @@
 import {Route} from "wouter";
-
+import './Globals.sass'
 
 //COMPONENTS
 import Navigation from "./components/Navigation/Navigation";

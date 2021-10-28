@@ -4,6 +4,7 @@ import React, {useContext} from 'react'
 import UserContext from '../../context/UserContext'
 import HeroDetails from '../HeroDetails/HeroDetails';
 
+import s from './HeroCard.module.sass'
 
 export default function HeroCard({heroData}) {
   const context = useContext(UserContext);
@@ -21,13 +22,24 @@ export default function HeroCard({heroData}) {
   }
   console.log(heroData);
   return (
-    <div>
-      <h2>{heroData.name}</h2>
-      <div>
-        <img style={{maxWidth: "100%", width:"300px"}} src={heroData.image.url} alt="" />
+    <div className={s.container}>
+
+      <div className={s.imgContainer}>
+
+        <img className={s.img} src={heroData.image.url} alt="" />
+
+        <div className={s.nameContainer}>
+          <h2 className={s.name}>{heroData.name}</h2>
+        </div>
+        
+        <div className={s.addButton} onClick={()=> handleAdd(heroData)}>+</div>
       </div>
-      <button onClick={()=> handleAdd(heroData)}>Add to my team!</button>
-      <HeroDetails heroData={heroData}/>
+
+
+
+      
+      {/* <HeroDetails heroData={heroData}/> */}
+
     </div>
   )
 }

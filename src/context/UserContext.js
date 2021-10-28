@@ -51,13 +51,9 @@ const UserContextWrapper = (props) => {
       if(h.biography.alignment === "good") goodHeroCounter++;
       if(h.biography.alignment === "bad") badHeroCounter++;
     })
-
-    
-
     if(hero.biography.alignment === "good") {
       if(goodHeroCounter===3) {alert("Límite de héroes buenos alcanzado (3)");return}
     }
-
     if(hero.biography.alignment === "bad") {
       if(badHeroCounter===3) {alert("Límite de héroes malos alcanzado (3)");return}
     }
