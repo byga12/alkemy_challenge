@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'wouter'
+
+import s from './Navigation.module.sass'
 export default function Navigation() {
 
   const [location, setLocation] = useLocation()
@@ -10,11 +12,11 @@ export default function Navigation() {
   },[location, setLocation])
 
   return (
-    <nav>
-      <ul>
+    <nav className={s.nav}>
+      <ul className={s.links}>
         <li><Link to="/team">My Team</Link></li>
         <li><Link to="/explore">Explore Heroes</Link></li>
-        {!localStorage.getItem("token") ? <li><Link to="/login">Login</Link></li> : <li>You are logged in!</li>}
+        {!localStorage.getItem("token") ? <li><Link to="/login">Login</Link></li> : null}
       </ul>
     </nav>
   )

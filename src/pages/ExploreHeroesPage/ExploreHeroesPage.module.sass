@@ -1,23 +1,57 @@
 
 
-.container
+.searchContainer
   display: flex
   align-items: center
   justify-content: center
-  min-height: 70vh
-  background: #3d66d8
+  min-height: 90vh
+  background: url("../../assets/batman_bckg.jpg")
+  background-attachment:fixed
+  background-repeat: no-repeat
+  background-size: cover
 
+
+.searchBar
+  display: flex
+  justify-content: center
 
 
 .searchInput, .searchButton
-  padding: .5rem
+  padding: .7rem
+  padding-inline: 1rem
+  background: rgba(0, 0, 0, 0.2)
+  opacity: 0.7
+  
+.searchInput
+  width: 50%
+  font-family: Poppins
+  font-size: 1rem
+  border-radius: 100px 0px 0px 100px
+  border: none
+  color: #fff
 
+.searchButton
+  width: 20%
+  display: flex
+  align-items: center
+  justify-content: center
+  border: none
+  outline: none
+  border-radius: 0px 100px 100px 0px
+  cursor: pointer
 
+.searchButton:active
+  border: none
+  outline: none  
+  
+
+.searchInput:focus
+  outline: none
 
 //////////////////
 
 .searchResults
-  margin: 30px auto
+  margin: 0px auto
   width: 95%
   gap: .4rem
   display: grid
