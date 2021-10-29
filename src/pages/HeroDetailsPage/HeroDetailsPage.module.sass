@@ -21,8 +21,33 @@
   flex-direction: column
   justify-content: center
   align-items: flex-start
+  margin: 0 auto
   margin-top: 3rem
   padding: .5rem
   
 .list li
   margin: 1rem
+
+
+.addHeroButton
+  margin-top: 1rem
+  padding: 1rem
+  border-radius: 100px
+  background: transparent
+  color: white
+  border: 1px solid white 
+  cursor: pointer
+
+
+@media (min-width: 600px)
+  .list
+    width: 80%
+    padding-top: 4rem
+    font-size: 1.3rem
+  .addHeroButton
+    font-size: 1.3rem
+@media (min-width: 1000px)
+  .list
+    width: 60%
+    padding-top: 4rem
+    font-size: 1.7rem

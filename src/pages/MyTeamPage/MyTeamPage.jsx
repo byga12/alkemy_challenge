@@ -30,7 +30,7 @@ export default function MyTeamPage() {
                     const height = +numero.appearance.weight[1].split(" ")[0]
                     return acumulador + height
                   },0)
-                /getTeam().length).toFixed(2)
+                /getTeam().length).toFixed(2) | 0
                 } 
               {" "}kg
               </li>
@@ -40,7 +40,7 @@ export default function MyTeamPage() {
                     const height = +numero.appearance.height[1].split(" ")[0]
                     return acumulador + height
                   },0)
-                /getTeam().length).toFixed(2)
+                /getTeam().length).toFixed(2) | 0
                 } 
               {" "}cm
               </li>

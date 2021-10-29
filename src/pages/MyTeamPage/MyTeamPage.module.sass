@@ -17,6 +17,7 @@
 
 // GLOBAL STATS 
 .title
+  text-align: center
   font-size: 2.7rem
   margin-bottom: 2rem
 
@@ -38,7 +39,7 @@
 // MEMBER
 
 .memberImageContainer
-  // width: 50px
+
 
   img
     width: 100%
@@ -89,3 +90,30 @@
 .powerstatsList
   margin-top: .3rem
   font-family: Roboto
+
+
+
+
+
+
+
+
+// MEDIA QUERIES
+@media (min-width: 600px)
+  .teamStatsContainer
+    width: 80%
+  .stats
+    font-size: 1.5rem
+
+
+  .membersContainer
+    grid-template-columns: 1fr 1fr 1fr
+  .membersTitle
+    font-size: 2rem
+
+@media (min-width: 600px)
+  .teamStatsContainer
+    width: 70%
+
+
+

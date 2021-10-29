@@ -1,11 +1,16 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 
 import { searchById } from '../../services/api'
+
+//CONTEXT
+import UserContext from '../../context/UserContext'
 
 //STYLE
 import s from './HeroDetailsPage.module.sass'
 
 export default function HeroDetails({params}) {
+
+  const context = useContext(UserContext)
 
   const [heroData, setHeroData] = useState({})
   const [status, setStatus] = useState("pending")
@@ -27,13 +32,14 @@ export default function HeroDetails({params}) {
           <>
             <img className={s.bckg} src={heroData.image.url} alt="" />
             <ul className={s.list}>
-              <li>Nombre: <strong>{heroData.name}</strong></li>
+              <li>Name: <strong>{heroData.name}</strong></li>
               <li>Alias/es: <strong>{heroData.biography.aliases.map(alias => <span key={alias}>{alias}/</span>)}</strong></li>
-              <li>Peso: <strong>{heroData.appearance.weight.map(unit => <span key={unit}>{unit}/</span>)}</strong></li>
-              <li>Altura: <strong>{heroData.appearance.height.map(unit => <span key={unit}>{unit}/</span>)}</strong></li>
-              <li>Color de ojos: <strong>{heroData.appearance["eye-color"]}</strong></li>
-              <li>Color de cabello: <strong>{heroData.appearance["hair-color"]}</strong></li>
-              <li>Lugar de trabajo: <strong>{heroData.work.base}</strong></li>
+              <li>Weight: <strong>{heroData.appearance.weight.map(unit => <span key={unit}>{unit}/</span>)}</strong></li>
+              <li>Height: <strong>{heroData.appearance.height.map(unit => <span key={unit}>{unit}/</span>)}</strong></li>
+              <li>Eye color: <strong>{heroData.appearance["eye-color"]}</strong></li>
+              <li>Hair color: <strong>{heroData.appearance["hair-color"]}</strong></li>
+              <li>Workplace: <strong>{heroData.work.base}</strong></li>
+              <li><button className={s.addHeroButton} onClick={()=> context.addHero(heroData)}>Add to my team</button></li>
             </ul>
           </>
         }
@@ -42,12 +48,3 @@ export default function HeroDetails({params}) {
 }
   
 
-
-
-// ● Peso.
-// ● Altura.
-// ● Nombre.
-// ● Alias.
-// ● Color de ojos.
-// ● Color de cabello.
-// ● Lugar de trabajo.

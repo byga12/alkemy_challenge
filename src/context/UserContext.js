@@ -4,7 +4,7 @@ import React, {useState, useEffect} from "react";
 const getSumOfStat = (stat, array) => {
   let sum = 0;
   array.forEach(element => {
-    sum+= +element.powerstats[stat];
+    sum+= +element.powerstats[stat] | 0; //en caso de que haya algun stat sin definir lo igualo a 0
   })
   return sum;
 }
@@ -39,11 +39,11 @@ const UserContextWrapper = (props) => {
 
   const addHero = (hero) => {
 
-    if (team.length >= 6) {alert("Límite de héroes alcanzado (6)"); return}
+    if (team.length >= 6) {alert("Heroes limit reached (6)"); return}
 
     const searchRepeated = team.filter(h => h.id === hero.id)
     const isRepeated = searchRepeated.length ? true : false;
-    if (isRepeated) {alert(hero.name + " ya está en tu equipo!"); return}
+    if (isRepeated) {alert(hero.name + " is already on your team!"); return}
 
     let goodHeroCounter = 0;
     let badHeroCounter = 0;
@@ -52,10 +52,10 @@ const UserContextWrapper = (props) => {
       if(h.biography.alignment === "bad") badHeroCounter++;
     })
     if(hero.biography.alignment === "good") {
-      if(goodHeroCounter===3) {alert("Límite de héroes buenos alcanzado (3)");return}
+      if(goodHeroCounter===3) {alert("Good heroes's limit reached (3)");return}
     }
     if(hero.biography.alignment === "bad") {
-      if(badHeroCounter===3) {alert("Límite de héroes malos alcanzado (3)");return}
+      if(badHeroCounter===3) {alert("Bad heroes's limit reached (3)");return}
     }
     //Si pasó todas las validaciones, añado el héroe.
     setTeam([...team,hero])
