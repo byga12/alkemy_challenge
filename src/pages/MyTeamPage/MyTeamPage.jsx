@@ -1,43 +1,85 @@
 // import React, {useContext} from 'react'
 import UserContext from '../../context/UserContext'
-// import s from './MyTeamPage.module.sass'
+import s from './MyTeamPage.module.sass'
 
 export default function MyTeamPage() {
   // const context = useContext(UserContext)
-  // console.log(context.getTeam());
-  // console.log(context.getTeamStats());
+
+
   return (
     <UserContext.Consumer>
       { ({getTeam, getTeamStats, removeHero}) => 
-      <>
-      <h1>My team {getTeam().length}/6</h1>
-
-      <h2>Global stats</h2>
-      <ul>
-        {Object.entries(getTeamStats()).map(stat => <li key={stat[0]}>{stat[0]}: {stat[1]}</li>)}
-      </ul>
+      <div className={s.background}>
+        <div className={s.container}>
 
 
-      <h2>Members</h2>
-      {getTeam().map(member => 
-      <div key={member.id}>
-        <ul>
-          <li>{member.name}</li>
-          <li><img style={{maxWidth: "100%", width:"300px"}} src={member.image.url} alt="superhero" /></li>
-          <li>
-            {Object.entries(member.powerstats).map(stat => 
-            <div key={stat[0]}>
-              <strong>{stat[0]}: {stat[1]}</strong>
-              
-            </div>
+
+          <div className={s.teamStatsContainer}>
+            <h1 className={s.title}>Team {getTeam().length}/6</h1>
+            <ul className={s.stats}>
+            <h2 className={s.statsTitle}>Global stats</h2>
+              {/* Obtengo array de stats, los ordeno y los devuelvo en forma de <li> */}
+              {
+                Object.entries(getTeamStats())
+                .sort((a,b) => b[1]-a[1]) 
+                .map(stat => <li key={stat[0]}>{stat[0]}: {stat[1]}</li>)
+              }
+              <li>avg. weight: {" "} 
+                {getTeam()
+                .reduce( (acumulador,numero)=>{
+                    const height = +numero.appearance.weight[1].split(" ")[0]
+                    return acumulador + height
+                  },0)
+                /getTeam().length
+                } 
+              {" "}kg
+              </li>
+              <li>avg. height:{" "} 
+                {getTeam()
+                .reduce( (acumulador,numero)=>{
+                    const height = +numero.appearance.height[1].split(" ")[0]
+                    return acumulador + height
+                  },0)
+                /getTeam().length
+                } 
+              {" "}cm
+              </li>
+            </ul>
+          </div>
+
+
+          
+          <h2 className={s.membersTitle}>Members</h2>
+          <ul className={s.membersContainer}>
+          {getTeam().map(member => 
+              <div className={s.memberContainer} key={member.id}>
+                <li className={s.memberImageContainer}><img src={member.image.url} alt="superhero" /></li>
+                <li className={s.memberName}>{member.name}</li>
+
+                <li>
+                  <ul className={s.powerstatsList}>
+                    {Object.entries(member.powerstats).map(stat => 
+                    <div key={stat[0]}>
+                      <strong>{stat[0]}: {stat[1]}</strong>
+                    </div>
+                    )}
+                  </ul>
+                </li>
+
+                <div className={s.deleteMemberButton} onClick={()=> removeHero(member.id)}>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ff0000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+                </div>
+              </div>
             )}
-          </li>
-        </ul>
-        <button onClick={()=> removeHero(member.id)}>X</button>
-      </div>
-        )}
-      </>
+          </ul>
+        
+
+          </div>
+        </div>
       }
+
     </UserContext.Consumer>
   )
 }
+
+
