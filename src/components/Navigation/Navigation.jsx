@@ -11,12 +11,23 @@ export default function Navigation() {
     }
   },[location, setLocation])
 
+
+  const handleLogout= () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("team");
+    setLocation('/login')
+  }
+
   return (
     <nav className={s.nav}>
       <ul className={s.links}>
         <li><Link to="/team">My Team</Link></li>
         <li><Link to="/explore">Explore Heroes</Link></li>
-        {!localStorage.getItem("token") ? <li><Link to="/login">Login</Link></li> : null}
+        {
+          !localStorage.getItem("token") ? 
+          <li className={s.loginButton}><Link to="/login">Login</Link></li> : 
+          <li className={s.logoutButton} onClick={handleLogout}>Logout</li>
+        }
       </ul>
     </nav>
   )

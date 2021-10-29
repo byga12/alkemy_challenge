@@ -37,7 +37,7 @@ export default function LoginPage() {
         })
         .then(res => {
           localStorage.setItem("token", res.data.token)
-          window.location.href = '/team'
+          window.location.href = '/explore'
         })
         .catch(() => {
           actions.setFieldError("submitError", "El email y/o la contraseña ingresados no son válidos")
@@ -56,17 +56,17 @@ export default function LoginPage() {
           <div className={s.inputContainer}>
             <label htmlFor="email">Email address</label>
             <input className={s.formInput} type="email" id="email" {...props.getFieldProps('email')} />
-            {props.touched.email && props.errors.email ? <div>{props.errors.email}</div> : null}
+            {props.touched.email && props.errors.email ? <div className={s.error}>{props.errors.email}</div> : null}
           </div>
 
           <div className={s.inputContainer}>
             <label htmlFor="password">Password</label>
             <input className={s.formInput} type="password" id="password" {...props.getFieldProps('password')} />
-            {props.touched.password && props.errors.password ? <div>{props.errors.password}</div> : null}
+            {props.touched.password && props.errors.password ? <div className={s.error}>{props.errors.password}</div> : null}
           </div>
           <button className={s.submitButton} type="submit">Login</button>
 
-          {props.errors.submitError? <div>{props.errors.submitError}</div> : null}
+          {props.errors.submitError? <div className={s.error}>{props.errors.submitError}</div> : null}
 
         </form>
       }

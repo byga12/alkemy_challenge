@@ -58,6 +58,7 @@ const UserContextWrapper = (props) => {
       if(badHeroCounter===3) {alert("Bad heroes's limit reached (3)");return}
     }
     //Si pasó todas las validaciones, añado el héroe.
+    alert(hero.name + " has been added succesfully to your team")
     setTeam([...team,hero])
   }
 
