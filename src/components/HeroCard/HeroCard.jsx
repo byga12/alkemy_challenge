@@ -2,14 +2,14 @@ import React, {useContext} from 'react'
 
 
 import UserContext from '../../context/UserContext'
-import HeroDetails from '../HeroDetails/HeroDetails';
+import { useLocation } from 'wouter';
 
 import s from './HeroCard.module.sass'
 
 export default function HeroCard({heroData}) {
   const context = useContext(UserContext);
 
-
+  const setLocation = useLocation()[1];
 
 
   const handleAdd = (heroData) => {
@@ -20,9 +20,9 @@ export default function HeroCard({heroData}) {
     context.addHero(heroData)
     
   }
-  console.log(heroData);
+
   return (
-    <div className={s.container}>
+    <div onClick={()=> setLocation(`/hero/${heroData.id}`)} className={s.container}>
 
       <div className={s.imgContainer}>
 
@@ -32,13 +32,8 @@ export default function HeroCard({heroData}) {
           <h2 className={s.name}>{heroData.name}</h2>
         </div>
         
-        <div className={s.addButton} onClick={()=> handleAdd(heroData)}>+</div>
+        <div className={s.addButton} onClick={(e)=> {handleAdd(heroData);e.stopPropagation()}}>+</div>
       </div>
-
-
-
-      
-      {/* <HeroDetails heroData={heroData}/> */}
 
     </div>
   )

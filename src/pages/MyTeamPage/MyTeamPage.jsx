@@ -17,7 +17,7 @@ export default function MyTeamPage() {
           <div className={s.teamStatsContainer}>
             <h1 className={s.title}>Team {getTeam().length}/6</h1>
             <ul className={s.stats}>
-            <h2 className={s.statsTitle}>Global stats</h2>
+              <h2 className={s.statsTitle}>Global stats</h2>
               {/* Obtengo array de stats, los ordeno y los devuelvo en forma de <li> */}
               {
                 Object.entries(getTeamStats())
@@ -25,22 +25,22 @@ export default function MyTeamPage() {
                 .map(stat => <li key={stat[0]}>{stat[0]}: {stat[1]}</li>)
               }
               <li>avg. weight: {" "} 
-                {getTeam()
+                {(getTeam()
                 .reduce( (acumulador,numero)=>{
                     const height = +numero.appearance.weight[1].split(" ")[0]
                     return acumulador + height
                   },0)
-                /getTeam().length
+                /getTeam().length).toFixed(2)
                 } 
               {" "}kg
               </li>
               <li>avg. height:{" "} 
-                {getTeam()
+                {(getTeam()
                 .reduce( (acumulador,numero)=>{
                     const height = +numero.appearance.height[1].split(" ")[0]
                     return acumulador + height
                   },0)
-                /getTeam().length
+                /getTeam().length).toFixed(2)
                 } 
               {" "}cm
               </li>

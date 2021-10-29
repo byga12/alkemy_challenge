@@ -11,3 +11,12 @@ export const searchByKeyword = async (keyword) => {
     url: `/search/${keyword}`,
   })
 }
+
+
+export const searchById = async (id) => {
+  return axios({
+    method: 'get', 
+    baseURL: BASE_URL,
+    url: `/${id}`,
+  })
+}
