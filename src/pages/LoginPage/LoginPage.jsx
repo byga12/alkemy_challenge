@@ -31,7 +31,7 @@ export default function LoginPage() {
       validateOnChange={false}
       onSubmit={(values, actions) => {
         
-        axios.post('http://challenge-react.alkemy.org/', {
+        axios.post('http://challenge-react.alkemy.org', {
           email: values.email,          //el mail correcto es: challenge@alkemy.org
           password: values.password     //el password correcto es: react
         })
