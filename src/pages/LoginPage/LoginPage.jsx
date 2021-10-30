@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Formik } from 'formik';
 
 //STYLES
@@ -18,10 +17,19 @@ const validate = values => {
 
 
 
+//una función para "simular" el login, devuelve una promesa que al ser resulta correctamente nos da un token.
+const login = (email, password) => {
+  return new Promise((res, rej) => {
+    if (email === "challenge@alkemy.org" && password === "react") {
+      res({token: Math.round(Math.random()*1000000000)})
+    } else rej();
+  })
+}
+
+
+
 export default function LoginPage() {
   
-
-
   return (
     <div className={s.container}>
       <Formik
@@ -31,13 +39,10 @@ export default function LoginPage() {
       validateOnChange={false}
       onSubmit={(values, actions) => {
         
-        axios.post('http://challenge-react.alkemy.org', {
-          email: values.email,          //el mail correcto es: challenge@alkemy.org
-          password: values.password     //el password correcto es: react
-        })
+        login(values.email, values.password)
         .then(res => {
-          localStorage.setItem("token", res.data.token)
-          window.location.href = '/explore'
+          localStorage.setItem("token", res.token)
+          window.location.href = '/'
         })
         .catch(() => {
           actions.setFieldError("submitError", "El email y/o la contraseña ingresados no son válidos")

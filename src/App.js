@@ -23,7 +23,7 @@ function App() {
     <UserContextWrapper>
       <div className="App">
         <Navigation/>
-        <Route path="/explore" component={SearchPage}/>
+        <Route path="/" component={SearchPage}/>
         <Route path="/team" component={MyTeamPage}/>    
         <Route path="/login" component={LoginPage}/>  
 

@@ -22,7 +22,7 @@ export default function Navigation() {
     <nav className={s.nav}>
       <ul className={s.links}>
         <li><Link to="/team">My Team</Link></li>
-        <li><Link to="/explore">Explore Heroes</Link></li>
+        <li><Link to="/">Explore Heroes</Link></li>
         {
           !localStorage.getItem("token") ? 
           <li className={s.loginButton}><Link to="/login">Login</Link></li> : 
