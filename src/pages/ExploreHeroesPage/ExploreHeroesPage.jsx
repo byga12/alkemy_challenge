@@ -1,31 +1,19 @@
-import { useState } from 'react';
 import s from './ExploreHeroesPage.module.sass'
 
-import HeroCard from '../../components/HeroCard/HeroCard';
+import { useLocation } from 'wouter';
 
-//API
-import {searchByKeyword} from '../../services/api'
+
 
 
 export default function SearchPage() {
 
-  
-  //data son los resultados de la búsqueda
-  const [data, setData] = useState({}) 
-  const [status, setStatus] = useState("")
-
-  
+  const setLocation = useLocation()[1];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus("pending");
-    searchByKeyword(e.target.searchInput.value)
-    .then(response => {
-      setData(response.data)
-      setStatus("completed")
-    })
-  }
+    setLocation(`/search/${e.target.searchInput.value}`)
 
+  }
 
   return (
     <>
@@ -39,17 +27,7 @@ export default function SearchPage() {
       </form>
     </div>
 
-    <div style={status === "" ? null : {marginBlock:"30px"}} className={s.searchResults}>
-      
-      {status === "pending" ? "loading..." : null }
 
-      {status === "completed" ? 
-          data.results ? 
-              data.results.map(hero => <HeroCard key={hero.id} heroData={hero}/>)
-          : "no results found"
-      : null}
-  
-      </div>
     </>
   )
 }

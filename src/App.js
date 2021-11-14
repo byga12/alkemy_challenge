@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 
 //COMPONENTS
 import HeroDetailsPage from "./pages/HeroDetailsPage/HeroDetailsPage";
+import ListOfHeroes from "./components/ListOfHeroes/ListOfHeroes";
 
 //CONTEXT
 import {UserContextWrapper} from "./context/UserContext";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/team" component={MyTeamPage}/>    
         <Route path="/login" component={LoginPage}/>  
 
+        <Route path="/search/:keyword" component={ListOfHeroes}/>
         <Route path="/hero/:id" component={HeroDetailsPage}/>
     
       </div>
