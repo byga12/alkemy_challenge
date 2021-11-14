@@ -27,7 +27,7 @@ function App() {
         <Route path="/team" component={MyTeamPage}/>    
         <Route path="/login" component={LoginPage}/>  
 
-        <Route path="/hero/:id" component={HeroDetailsPage} a={"asdsd"}/>
+        <Route path="/hero/:id" component={HeroDetailsPage}/>
     
       </div>
     </UserContextWrapper>

@@ -10,7 +10,7 @@ import {searchByKeyword} from '../../services/api'
 export default function SearchPage() {
 
   
-
+  //data son los resultados de la búsqueda
   const [data, setData] = useState({}) 
   const [status, setStatus] = useState("")
 
@@ -40,6 +40,7 @@ export default function SearchPage() {
     </div>
 
     <div style={status === "" ? null : {marginBlock:"30px"}} className={s.searchResults}>
+      
       {status === "pending" ? "loading..." : null }
 
       {status === "completed" ? 

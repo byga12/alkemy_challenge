@@ -13,15 +13,11 @@ export default function HeroCard({heroData}) {
 
 
   const handleAdd = (heroData) => {
-    
-    // AFDGHNHG
-
-    
     context.addHero(heroData)
-    
   }
 
   return (
+    //Al hacer click en el div cambio la location a '/hero/id'
     <div onClick={()=> setLocation(`/hero/${heroData.id}`)} className={s.container}>
 
       <div className={s.imgContainer}>

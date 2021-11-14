@@ -13,21 +13,22 @@ export default function MyTeamPage() {
         <div className={s.container}>
 
 
-
+          {/* STATS TOTALES DEL EQUIPO */}
           <div className={s.teamStatsContainer}>
             <h1 className={s.title}>Team {getTeam().length}/6</h1>
             <ul className={s.stats}>
               <h2 className={s.statsTitle}>Global stats</h2>
               {/* Obtengo array de stats, los ordeno y los devuelvo en forma de <li> */}
               {
-                Object.entries(getTeamStats())
-                .sort((a,b) => b[1]-a[1]) 
-                .map(stat => <li key={stat[0]}>{stat[0]}: {stat[1]}</li>)
+                Object.entries(getTeamStats())  //[ ["durability", 100], ["power", 100], ... ] 
+                .sort((a,b) => b[1]-a[1])  //ordeno segun los valores de los stats
+                .map(stat => <li key={stat[0]}>{stat[0]}: {stat[1]}</li>) //devuelvo una array de <li>'s
               }
               <li>avg. weight: {" "} 
                 {(getTeam()
                 .reduce( (acumulador,numero)=>{
-                    const height = +numero.appearance.weight[1].split(" ")[0]
+                    const height = +numero.appearance.weight[1].split(" ")[0] //split devuelve array de cadenas, accedo al
+                    //indice 0, ya que este tendrá el valor numérico, luego transformo de stirng a numeor con el operador "+"
                     return acumulador + height
                   },0)
                 /getTeam().length).toFixed(2) | 0

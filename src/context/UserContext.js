@@ -39,12 +39,16 @@ const UserContextWrapper = (props) => {
 
   const addHero = (hero) => {
 
+    //Se alcanzó el límite de héroes permitido?
     if (team.length >= 6) {alert("Heroes limit reached (6)"); return}
 
+    //Ya está el héroe en el equipo? Creo un array que contendrá heroes que concidan con el id del heroe que quiero agregar, 
+    //si dicho array tiene un longitud mayor a 0 significa que dicho heroe ya se encuentra en el team.
     const searchRepeated = team.filter(h => h.id === hero.id)
     const isRepeated = searchRepeated.length ? true : false;
     if (isRepeated) {alert(hero.name + " is already on your team!"); return}
 
+    //Busco la cantidad de heroes buenos y malos y si es igual a 3 no permito agregar más.
     let goodHeroCounter = 0;
     let badHeroCounter = 0;
     team.forEach(h => {
@@ -57,6 +61,7 @@ const UserContextWrapper = (props) => {
     if(hero.biography.alignment === "bad") {
       if(badHeroCounter===3) {alert("Bad heroes's limit reached (3)");return}
     }
+    
     //Si pasó todas las validaciones, añado el héroe.
     alert(hero.name + " has been added succesfully to your team")
     setTeam([...team,hero])

@@ -5,6 +5,7 @@ import s from './Navigation.module.sass'
 export default function Navigation() {
 
   const [location, setLocation] = useLocation()
+  //cada vez que cambia la location, me fijo si tengo un token de autenticación en localStorage, si no hay, redirijo a /login
   useEffect(()=>{
     if(!localStorage.getItem("token")) {
       setLocation('/login')
